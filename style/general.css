@@ -1,0 +1,45 @@
+.body-content{
+    min-height: 100vh;
+    position: relative;
+}
+
+.bg-nav{
+    background-color: rgb(209, 209, 209);
+}
+
+footer{
+    width: 100%;
+    background-color: rgb(209, 209, 209);
+}
+
+.footer-row{
+    width: 100%;
+    padding: 60px;
+}
+
+.footer-contact-info{
+    font-weight: 500;
+}
+
+.footer-nav-container{
+    margin-top: 5px;
+}
+
+.footer-nav-container a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer-nav-container a:hover{
+    color: rgb(90, 88, 88);
+}
+
+.footer-disclaimer{
+    background-color: black;
+}
+
+@media (min-width:850px){
+    .footer-row{
+        padding: 50px 100px;
+    }
+}
