@@ -4,6 +4,7 @@ var db = firebase.firestore();
 //Global variables
 let current_user_id = "";
 let current_username = "";
+let account_type = "";
 let checked_login = false;
 let firstTimeBidPage = true;
 
@@ -479,14 +480,7 @@ function checkSignIn()
     firebase.auth().onIdTokenChanged(function(user) {
         if (user) {
             // User is signed in or token was refreshed.
-            checked_login = true;
-
-            if(user_status != null)
-            {
-                //Show my profile and logout button
-                user_status[1].innerHTML = '<a class="nav-link" href="myprofile.html">My profile</a>';
-                user_status[2].innerHTML = '<a class="nav-link" onclick=\'logout()\' href="">Logout</a>';
-            }   
+            checked_login = true;   
 
             current_user_id = user.uid;
 
@@ -511,6 +505,7 @@ function logout()
 function getUserInfo(user_id)
 {
     var UserRef = firestore.collection("users").doc(user_id);
+    var user_status = document.getElementsByClassName("nav-item");
 
     UserRef.get().then((doc) => {
         if (doc.exists) {
@@ -518,9 +513,24 @@ function getUserInfo(user_id)
             current_user_id = user_id;
             current_username = doc.data().Username;
             current_user_email = doc.data().Email;
-
+            account_type = doc.data().AccountType
             console.log("success")
+
+            if(account_type == "bidder")
+            {
+                //Show my profile and logout button
+                user_status[1].innerHTML = '<a class="nav-link" href="bidder-profile.html">My profile</a>';
+                user_status[2].innerHTML = '<a class="nav-link" onclick=\'logout()\' href="">Logout</a>';
+            }
+            else
+            {
+                //Show my profile and logout button
+                user_status[1].innerHTML = '<a class="nav-link" href="auctioneer-profile.html">My profile</a>';
+                user_status[2].innerHTML = '<a class="nav-link" onclick=\'logout()\' href="">Logout</a>';
+            }
         }
+
+
 
         
     }).catch((error) => {
@@ -617,4 +627,82 @@ function enterSignIn()
         event.preventDefault();
         login();
     }
+}
+
+function sampleBidderPastRecord(){
+    table = document.getElementById("bidding-list");
+
+    for(var i = 0; i < 100; i++){
+
+        if(i % 2 ==0){
+            table.innerHTML += 
+            "<tr>" +
+                "<th scope='row' class='text-center'><img src='images/apple-macbook-air-13-m1-8gb-256gb-ssd-laptop-min.jpg' width='100%'></th>"+
+                "<td>Apple Macbook Air 13 M1 8GB 256GB SSD Laptop</td>"+
+                "<td>$1055</td>"+
+                "<td><span class='badge badge-warning bid-badge'>Unpaid</span></td>"+
+                "<td>Visa</td>"+
+                "<td>20 July 2021, 09:52:21 AM</td>"+
+                "<td class='text-center'><a href='checkout.html' class='btn btn-success'><i class='fas fa-money-bill'></i> Pay Now</a></td>"+
+            "</tr>";
+        }
+        else{
+            table.innerHTML += 
+            "<tr>" +
+                "<th scope='row' class='text-center'><img src='images/Apple mac mini late2018-min.jpg' width='100%'></th>"+
+                "<td>Apple mac mini</td>"+
+                "<td>$850</td>"+
+                "<td><span class='badge badge-success bid-badge'>Paid</span></td>"+
+                "<td>Visa</td>"+
+                "<td>20 July 2021, 09:52:21 AM</td>"+
+                "<td class='text-center'><a href='product-info.html' class='btn btn-primary'><i class='fas fa-eye'></i> View</a></td>"+
+            "</tr>";
+        }
+        
+    }
+
+    $(document).ready( function () {
+        //Create new Datatable
+        $('#bidding-history-table').DataTable();
+
+    } );
+}
+
+function sampleAuctioneerPastRecord(){
+    table = document.getElementById("bidding-list");
+
+    for(var i = 0; i < 100; i++){
+
+        if(i % 2 ==0){
+            table.innerHTML += 
+            "<tr>" +
+                "<th scope='row' class='text-center'><img src='images/apple-macbook-air-13-m1-8gb-256gb-ssd-laptop-min.jpg' width='100%'></th>"+
+                "<td>Apple Macbook Air 13 M1 8GB 256GB SSD Laptop</td>"+
+                "<td>$1055</td>"+
+                "<td><span class='badge badge-warning bid-badge'>Unpaid</span></td>"+
+                "<td>Visa</td>"+
+                "<td>20 July 2021, 09:52:21 AM</td>"+
+                "<td class='text-center'><a href='' class='btn btn-danger'><i class='fas fa-envelope'></i> Report</a></td>"+
+            "</tr>";
+        }
+        else{
+            table.innerHTML += 
+            "<tr>" +
+                "<th scope='row' class='text-center'><img src='images/Apple mac mini late2018-min.jpg' width='100%'></th>"+
+                "<td>Apple mac mini</td>"+
+                "<td>$850</td>"+
+                "<td><span class='badge badge-success bid-badge'>Paid</span></td>"+
+                "<td>Visa</td>"+
+                "<td>20 July 2021, 09:52:21 AM</td>"+
+                "<td class='text-center'><a href='product-info.html' class='btn btn-primary'><i class='fas fa-eye'></i> View</a></td>"+
+            "</tr>";
+        }
+        
+    }
+
+    $(document).ready( function () {
+        //Create new Datatable
+        $('#bidding-history-table').DataTable();
+
+    } );
 }

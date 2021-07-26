@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Out</title>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDhoYOI1DhMYAya6HBoX6aidRqe-gPeZBA",
+            authDomain: "online-auction-system-dea5c.firebaseapp.com",
+            projectId: "online-auction-system-dea5c",
+            storageBucket: "online-auction-system-dea5c.appspot.com",
+            messagingSenderId: "645274894994",
+            appId: "1:645274894994:web:19b50b8ebef40df9915c4b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const firestore = firebase.firestore();
+    </script>
+
+    <script src="script/script.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <script src="bootstrap-4.5.3-dist/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
+    <script src="fontawesome-free-5.15.1-web/js/all.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/general.css">
+    <link rel="stylesheet" href="style/checkout.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-nav">
+        <a class="navbar-brand" href="home.html">Auction</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+
+                </li>
+
+                <li class="nav-item">
+
+                </li>
+            </ul>
+            
+            </form>
+        </div>
+    </nav>
+
+    <div class="body-content">
+        <div class="checkout-container">
+            <div class="row">
+                <div class="col-lg-9 checkout-col">
+                    <div class="checkout-title mb-3 mt-2">
+                        <h1>Payment Details</h1>
+                    </div>
+
+                    <div class="bg-dark text-light pay-with-card-trigger text-center" id="pay-with-card-trigger">
+                        Pay With Cards <i class="far fa-credit-card"></i>
+                    </div>
+
+                    <div class="pay-with-card-form" id="pay-with-card-form">
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Card Type:</label>
+                            <div class="col-sm-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1"><img src="images/visa-payment.png" class="payment-icon" alt=""></label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2"><img src="images/mastercard.png" class="payment-icon" alt=""></label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                    <label class="form-check-label" for="inlineRadio3"><img src="images/maestro.png" class="payment-icon" alt=""></label>
+                                  </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAddress">Cardholder Name</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAddress">Card Number</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 1234 1234 1234">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Expiry Date</label>
+                                <input type="text" class="form-control" id="inputEmail4" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">CVV</label>
+                                <input type="text" class="form-control" id="inputPassword4" placeholder="123">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="bg-paypal text-light pay-with-card-trigger text-center mt-3" id="pay-with-online-trigger">
+                        Online Payment <i class="fab fa-cc-paypal"></i>
+                    </div>
+
+                    <div class="pay-with-online-form" id="pay-with-online-form">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Online Banking & Direct Debit <img src="images/onlinebanking.png" alt="" class="payment-icon">
+                            </label>
+                          </div>
+
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Pay with PayPal <img src="images/paypal.png" alt="" class="payment-icon" id="paypal-icon"> 
+                            </label>
+                          </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="col-lg-3 checkout-col">
+                    <div class="cart-title mt-2 mb-3">
+                        <h2>Your Cart</h2>
+                    </div>
+
+                    <div class="cart-container">
+                        <div class="cart-media">
+                            <div class="row">
+                                <div class="col-4 media">
+                                    <img src="images/apple-macbook-air-13-m1-8gb-256gb-ssd-laptop-min.jpg" class="align-self-center" width="100%">
+                                </div>
+                                
+                                <div class="col-8">
+                                  <h5 class="mt-3">Apple Macbook Air 13 M1 8GB 256GB SSD Laptop</h5>
+                                    <p>Price: <span class="text-success">$1050</span></p>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class="cart-media mt-1">
+                            <div class="row">
+                                <div class="col-4 media">
+                                    <img src="images/apple-macbook-air-13-m1-8gb-256gb-ssd-laptop-min.jpg" class="align-self-center" width="100%">
+                                </div>
+                                
+                                <div class="col-8">
+                                  <h5 class="mt-3">Apple Macbook Air 13 M1 8GB 256GB SSD Laptop</h5>
+                                    <p>Price: <span class="text-success">$1050</span></p>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="total-container mt-3">
+                        <h3>Summary</h3>
+
+                        <div class="total-display">
+                            <table class="table table-borderless">
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">Subtotal: </th>
+                                    <td class="text-right text-success font-weight-bold">$2100</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Shipping: </th>
+                                    <td class="text-right text-success font-weight-bold">$15</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Total: </th>
+                                    <td class="text-right text-success font-weight-bold">$2115</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <button class="btn btn-primary"  style="width: 100%;">Check Out</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="">
+        <div class="row footer-row">
+            <div class="footer-col col-lg-3 mb-3">
+                <h2>Help Centre</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <a href="#">About Us</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Privacy and Policy</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Contact Us</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Help</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col col-lg-3 mb-3">
+                <h2>Bidder</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <a href="#">Bidder Login</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Bids Items</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Bidder Profile</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-col col-lg-3 mb-3">
+                <h2>Auctioneer</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <a href="#">Auctioneer Login</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Auctioneer Items</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Auctioneer Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col col-lg-3 mt-3">
+                <h2>About Us</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <span class="footer-contact-info">No.23 Jalan 23, Selayang Baru 68100 Batu Caves, Selangor</span>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <span class="footer-contact-info">Email : hci-online-auction@gmail.com</span>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <span class="footer-contact-info">Call: hci-online-auction@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-disclaimer text-light text-center p-2">
+        <span>@2021 Online Auction Designed by Kenny's Team. All right reserved.</span>
+    </div>
+</body>
+</html>
+
+<script>
+    //Check Sign In
+    checkSignIn();
+</script>
+
+<script> 
+
+    var card_payment = true;
+    var card_payment_open = false;
+    var online_payment = true;
+    var online_payment_open = false;
+
+    $(document).ready(function(){
+
+        $("#pay-with-card-trigger").click(function(){
+            if(card_payment == true){
+                
+                $("#pay-with-card-form").slideToggle("slow");
+
+                if(card_payment_open == false){
+                    card_payment_open = true;
+                    online_payment = false;
+
+                    //Disable online payment trigger
+                    $("#pay-with-online-trigger").css("opacity", "0.5");
+                    $("#pay-with-online-trigger").css("cursor", "not-allowed");
+                }
+                else{
+                    card_payment_open = false;
+                    online_payment = true;
+
+                    //Enable online payment trigger
+                    $("#pay-with-online-trigger").css("opacity", "1");
+                    $("#pay-with-online-trigger").css("cursor", "pointer");
+                }
+            }
+
+        });
+
+       
+
+        $("#pay-with-online-trigger").click(function(){
+
+            if(online_payment == true)
+            {
+                $("#pay-with-online-form").slideToggle("slow");
+
+                if(online_payment_open == false){
+                    online_payment_open = true;
+                    card_payment = false;
+
+                    //Disable card payment trigger
+                    $("#pay-with-card-trigger").css("opacity", "0.5");
+                    $("#pay-with-card-trigger").css("cursor", "not-allowed");
+
+                }
+                else{
+                    online_payment_open = false;
+                    card_payment = true;
+
+                    //Enable card payment trigger
+                    $("#pay-with-card-trigger").css("opacity", "1");
+                    $("#pay-with-card-trigger").css("cursor", "pointer");
+                }
+            }
+            
+        });
+
+    });
+</script>

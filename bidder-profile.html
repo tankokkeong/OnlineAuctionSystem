@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidder Profile</title>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDhoYOI1DhMYAya6HBoX6aidRqe-gPeZBA",
+            authDomain: "online-auction-system-dea5c.firebaseapp.com",
+            projectId: "online-auction-system-dea5c",
+            storageBucket: "online-auction-system-dea5c.appspot.com",
+            messagingSenderId: "645274894994",
+            appId: "1:645274894994:web:19b50b8ebef40df9915c4b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const firestore = firebase.firestore();
+    </script>
+
+    <script src="script/script.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <script src="bootstrap-4.5.3-dist/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
+    <script src="fontawesome-free-5.15.1-web/js/all.js"></script>
+
+    <!-- Data tablets -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/general.css">
+    <link rel="stylesheet" href="style/myprofile.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-nav">
+        <a class="navbar-brand" href="home.html">Auction</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+
+                </li>
+
+                <li class="nav-item">
+
+                </li>
+            </ul>
+            
+            </form>
+        </div>
+    </nav>
+
+    <div class="body-content">
+        <div class="profile-container">
+            <div class="row">
+
+                <div class="col-lg-3 mb-3 myprofile-col">
+                    <div class="bidder-profile-title mb-3">
+                        <h1>Bidder Profile</h1>
+                    </div>
+
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                            <i class="far fa-user mr-2"></i> Account Details
+                        </a>
+
+                        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                            <i class="fas fa-shopping-cart mr-2"></i> Past Bid
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-9 myprofile-col-1">
+                  <div class="tab-content" id="nav-tabContent">
+
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+
+                        <div class="profile-form-title mb-3">
+                            <h2>Account Details</h2>
+                        </div>
+                        
+                        <div class="profile-form-container mt-3">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="">
+                                </div>
+                            </div>
+        
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="">
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Full Name</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="">
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Address Line 1</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="inputEmail3">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Address Line 2</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="inputEmail3">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">City</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="inputEmail3">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Country</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="inputEmail3">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Phone Number</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="inputEmail3">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <button class="btn btn-dark">Save Changes</button>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-payment-method">
+                            <div class="payment-method-title">
+                                <h2>Payment Method</h2>
+                            </div>
+
+                            <div class="payment-method-container mt-3">
+                                <button class="btn btn-dark">Add Payment</button>
+
+                                <ul class="list-unstyled mt-3">
+
+                                    <li class="payment-row">
+                                        <div class="payment-col">
+                                            <img src="images/visa.png" class="mr-3" width="50px">
+                                        </div>
+
+                                        <div class="payment-col payment-card-num">
+                                            1234 56XX XXXX 7890
+                                        </div>
+
+                                        <div class="payment-col payment-delete-btn">
+                                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                     
+
+                                    </li>
+
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <table class="table table-bordered" id="bidding-history-table">
+                            <thead>
+                              <tr class="bg-light">
+                                <th scope="col">Product</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price(RM)</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col">Payment Date</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+        
+                            <tbody id="bidding-list">
+
+                            </tbody>
+                        </table>
+
+                        <script>
+                            sampleBidderPastRecord();
+                        </script>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+        </div>
+        
+    </div>
+
+    <footer class="">
+        <div class="row footer-row">
+            <div class="footer-col col-lg-3 mb-3">
+                <h2>Help Centre</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <a href="#">About Us</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Privacy and Policy</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Contact Us</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Help</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col col-lg-3 mb-3">
+                <h2>Bidder</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <a href="#">Bidder Login</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Bids Items</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Bidder Profile</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-col col-lg-3 mb-3">
+                <h2>Auctioneer</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <a href="#">Auctioneer Login</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Auctioneer Items</a>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <a href="#">Auctioneer Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col col-lg-3 mt-3">
+                <h2>About Us</h2>
+
+                <div class="footer-nav">
+                    <div class="footer-nav-container">
+                        <span class="footer-contact-info">No.23 Jalan 23, Selayang Baru 68100 Batu Caves, Selangor</span>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <span class="footer-contact-info">Email : hci-online-auction@gmail.com</span>
+                    </div>
+
+                    <div class="footer-nav-container">
+                        <span class="footer-contact-info">Call: hci-online-auction@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-disclaimer text-light text-center p-2">
+        <span>@2021 Online Auction Designed by Kenny's Team. All right reserved.</span>
+    </div>
+</body>
+</html>
+
+<script>
+    //Check Sign In
+    checkSignIn();
+</script>
