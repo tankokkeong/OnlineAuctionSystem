@@ -245,6 +245,6 @@ function printCountry(id){
     //Print out available timezones
     for (var i = 0; i < countries_available.length; i++)
     {
-        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + countries_available[i] + "'>" + countries_available[i] + "</option>";
+        select_tag.innerHTML = select_tag.innerHTML + "<option value='" + countries_available[i] + "' id='" + countries_available[i] + "'>" + countries_available[i] + "</option>";
     }
 }

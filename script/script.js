@@ -506,6 +506,7 @@ function getUserInfo(user_id)
 {
     var UserRef = firestore.collection("users").doc(user_id);
     var user_status = document.getElementsByClassName("nav-item");
+    var current_url = window.location.pathname;
 
     UserRef.get().then((doc) => {
         if (doc.exists) {
@@ -521,6 +522,10 @@ function getUserInfo(user_id)
                 //Show my profile and logout button
                 user_status[1].innerHTML = '<a class="nav-link" href="bidder-profile.html">My profile</a>';
                 user_status[2].innerHTML = '<a class="nav-link" onclick=\'logout()\' href="">Logout</a>';
+
+                if(current_url == "/bidder-profile.html"){
+                    displayBidderProfile();
+                }
             }
             else
             {
@@ -705,4 +710,53 @@ function sampleAuctioneerPastRecord(){
         $('#bidding-history-table').DataTable();
 
     } );
+}
+
+function displayBidderProfile(){
+    console.log(window.location.pathname);
+
+    var userDoc = firestore.collection("users").doc(current_user_id);
+
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    var full_name = document.getElementById("full-name");
+    var address_line_1 = document.getElementById("address-line-1");
+    var address_line_2 = document.getElementById("address-line-2");
+    var city = document.getElementById("city");
+    var country = document.getElementById("country");
+    var phoneNumber = document.getElementById("phone-number");
+
+    userDoc.get().then((doc) => {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+
+            //Display Data
+            username.value = doc.data().Username;
+            full_name.value = doc.data().FullName;
+            address_line_1.value = doc.data().AddressLine1;
+            address_line_2.value = doc.data().AddressLine2;
+            city.value = doc.data().City;
+            phoneNumber.value = doc.data().PhoneNumber;
+
+            //Select the country
+            document.getElementById( doc.data().Country).selected = true;
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+}
+
+function profileChanges(){
+    var changes_alert = document.getElementById("changes-made");
+
+    //Display alert
+    changes_alert.style.display = "";
+
+    //Remove alert after 3 seconds
+    setTimeout(function(){
+        changes_alert.style.display = "none";
+    }, 3000);
 }
