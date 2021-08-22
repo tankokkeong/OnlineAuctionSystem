@@ -304,11 +304,15 @@ function SignUpAccount(){
         error_prompt[4].innerHTML = "";
     }
 
-
-    //Address Line 1 validation
-    if(addressLine1 === "")
+    //Phone number validation
+    if(phoneNumber === "")
     {
-        error_prompt[5].innerHTML = "Address line 1 cannot be empty!";
+        error_prompt[5].innerHTML = "Phone number cannot be empty!";
+        error_count++;
+    }
+    else if(digit_validation.test(phoneNumber) === false)
+    {
+        error_prompt[5].innerHTML = "Phone number should only contain numbers!";
         error_count++;
     }
     else
@@ -316,21 +320,21 @@ function SignUpAccount(){
         error_prompt[5].innerHTML = "";
     }
 
-    //City validation
-    if(city === "")
+    //Address Line 1 validation
+    if(addressLine1 === "")
     {
-        error_prompt[7].innerHTML = "City cannot be empty!";
+        error_prompt[6].innerHTML = "Address line 1 cannot be empty!";
         error_count++;
     }
     else
     {
-        error_prompt[7].innerHTML = "";
+        error_prompt[6].innerHTML = "";
     }
 
-    //Country validation
-    if(country === "")
+    //City validation
+    if(city === "")
     {
-        error_prompt[8].innerHTML = "Country cannot be empty!";
+        error_prompt[8].innerHTML = "City cannot be empty!";
         error_count++;
     }
     else
@@ -338,21 +342,18 @@ function SignUpAccount(){
         error_prompt[8].innerHTML = "";
     }
 
-    //Phone number validation
-    if(phoneNumber === "")
+    //Country validation
+    if(country === "")
     {
-        error_prompt[9].innerHTML = "Phone number cannot be empty!";
-        error_count++;
-    }
-    else if(digit_validation.test(phoneNumber) === false)
-    {
-        error_prompt[9].innerHTML = "Phone number should only contain numbers!";
+        error_prompt[9].innerHTML = "Country cannot be empty!";
         error_count++;
     }
     else
     {
         error_prompt[9].innerHTML = "";
     }
+
+    
     
     //If no error then sign up
     if(error_count === 0)
@@ -763,4 +764,75 @@ function profileChanges(){
     setTimeout(function(){
         changes_alert.style.display = "none";
     }, 3000);
+}
+
+function addPayment(){
+    var payment_row = document.getElementById("payment-row");
+    var no_payment = document.getElementById("no-payment");
+    var payment_added = document.getElementById("payment-added");
+
+    //Display Payment
+    payment_row.style.display = "";
+    payment_added.style.display = "";
+    no_payment.style.display = "none";
+
+    //Remove payment added alert after 3 seconds
+    setTimeout(function(){
+        payment_added.style.display = "none";
+    }, 3000);
+}
+
+function deletePayment(){
+    var payment_row = document.getElementById("payment-row");
+    var no_payment = document.getElementById("no-payment");
+    var payment_deleted = document.getElementById("payment-deleted");
+
+    //Remove Payment
+    payment_row.style.display = "none";
+    payment_deleted.style.display = "";
+    no_payment.style.display = "";
+    
+
+    //Remove payment deleted alert after 3 seconds
+    setTimeout(function(){
+        payment_deleted.style.display = "none";
+        
+    }, 3000);
+}
+
+function passwordChanged(){
+    var password_change_alert = document.getElementById("password-change-alert");
+
+    //Display password changed alert
+    password_change_alert.style.display = "";
+
+    //Remove payment deleted alert after 3 seconds
+    setTimeout(function(){
+        password_change_alert.style.display = "none";
+    }, 3000);
+}
+
+function fileValidation(id)
+{
+    var file = document.getElementById(id).value;
+    file = file.split(".");
+      
+      switch (file[1].toUpperCase()) {
+        case 'JPG':
+        case 'JPEG':
+        case 'PNG':
+          break;
+        default:
+          alert('Only jpg, jpeg and png images file type is allowed');
+          document.getElementById(id).value = '';
+      }
+    
+}
+
+function unauthorizedAccessed(){
+    firebase.auth().onIdTokenChanged(function(user) {
+        if (!user) {
+            window.location.href = "home.html";
+        }
+    });
 }

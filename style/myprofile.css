@@ -50,6 +50,17 @@
     font-size: 15px;
 }
 
+.description-popover{
+    height: 30px;
+}
+
+.error-prompt{
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+    height: auto;
+}
+
 @media (min-width:850px){
     .profile-container{
         padding: 50px 100px;
