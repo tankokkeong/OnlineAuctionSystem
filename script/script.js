@@ -532,6 +532,10 @@ function getUserInfo(user_id)
                 //Show my profile and logout button
                 user_status[1].innerHTML = '<a class="nav-link" href="auctioneer-profile.html">My profile</a>';
                 user_status[2].innerHTML = '<a class="nav-link" onclick=\'logout()\' href="">Logout</a>';
+
+                if(current_url == "/auctioneer-profile.html"){
+                    displayBidderProfile();
+                }
             }
         }
 

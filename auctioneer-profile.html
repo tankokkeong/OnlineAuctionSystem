@@ -31,6 +31,7 @@
     </script>
 
     <script src="script/script.js"></script>
+    <script src="script/signup.js"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -117,7 +118,7 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="">
+                                  <input type="text" class="form-control" id="username">
                                 </div>
                             </div>
         
@@ -125,7 +126,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="">
+                                      <input type="button" class="btn btn-dark" id="password" value="Change Password">
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +135,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Full Name</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="">
+                                      <input type="text" class="form-control" id="full-name">
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +144,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Address Line 1</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="inputEmail3">
+                                      <input type="text" class="form-control" id="address-line-1">
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +153,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Address Line 2</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="inputEmail3">
+                                      <input type="text" class="form-control" id="address-line-2">
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +162,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">City</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="inputEmail3">
+                                      <input type="text" class="form-control" id="city">
                                     </div>
                                 </div>
                             </div>
@@ -170,7 +171,9 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Country</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="inputEmail3">
+                                      <select class="form-control" id="country">
+                                          <option>Select your country</option>
+                                      </select>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +182,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Phone Number</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="inputEmail3">
+                                      <input type="text" class="form-control" id="phone-number">
                                     </div>
                                 </div>
                             </div>
@@ -509,4 +512,6 @@
 
 //Check Sign In
 checkSignIn();
+
+printCountry("country");
 </script>
