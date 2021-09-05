@@ -86,6 +86,18 @@
     color: black;
 }
 
+#dashboard-search-results-container{
+    padding-left: 15px;
+    position: relative;
+}
+
+.search-results-list{
+    position: absolute;
+    width: 100%;
+    padding-right: 15px;
+}
+
+
 @media (min-width:850px){
     .banner-text{
         width: 60%;

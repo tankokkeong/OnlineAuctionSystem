@@ -87,14 +87,24 @@
                 <div class="banner-search mt-3">
                     <form action="auctionResults.html" method="GET" style="width:100%;" class="banner-form">
                         <span class="banner-search-icon"><i class="fas fa-search"></i></span>
-                        <input type="text" class="form-control banner-search-input banner-search-element" placeholder="Search for anything" name="item">
+                        <input type="text" class="form-control banner-search-input banner-search-element" placeholder="Search for anything" name="item" onkeyup="dashboardSearch()" id="dashboard-search-input">
                         <button class="btn btn-primary banner-search-element">Search</button>
                     </form>
                 </div>
+
+                <div class="app-search-results border-secondary text-center" id="dashboard-search-results-container" style="display:none;">
+                    <div class="search-results-list text-left">
+                        <a class="app-search-item list-group-item list-group-item-action" href="#"><i class="fa fa-search mr-1"></i> Product 1</a>
+                        <a class="app-search-item list-group-item list-group-item-action" href="#"><i class="fa fa-search mr-1"></i> Product 2</a>
+                        <a class="app-search-item list-group-item list-group-item-action" href="#"><i class="fa fa-search mr-1"></i> Product 3</a>
+                        <a class="app-search-item list-group-item list-group-item-action" href="#"><i class="fa fa-search mr-1"></i> Product 4</a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="deals-section">
+        <div class="deals-section" style="z-index: -1;">
             <div class="section-header text-center">
                 <h3>How it works</h3>
             </div>
